@@ -1,3 +1,3 @@
-export { default as decodeNoVerifyToken } from "./decodeNoVerifyToken";
-export { default as decodeVerifyToken } from "./decodeVerifyToken";
-export { default as encodeToken } from "./encodeToken";
+export { default as decodeNoVerifyToken } from "./features/decodeNoVerifyToken";
+export { default as decodeVerifyToken } from "./features/decodeVerifyToken";
+export { default as encodeToken } from "./features/encodeToken";

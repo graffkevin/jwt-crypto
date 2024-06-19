@@ -1,5 +1,5 @@
-import { DecodedToken } from "./utils/interfaces";
-import { base64UrlDecode } from "./utils/base64";
+import { DecodedToken } from "../utils/interfaces";
+import { base64UrlDecode } from "../utils/base64";
 
 
 /**
