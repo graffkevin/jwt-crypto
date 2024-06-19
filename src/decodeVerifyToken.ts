@@ -1,20 +1,5 @@
-interface DecodedToken {
-    header: object;
-    payload: object;
-}
-
-/**
- * Decodes a Base64-URL encoded string.
- * @param input The Base64-URL encoded string to decode.
- */
-const base64UrlDecode = (input: string): string => {
-    input = input.replace(/-/g, '+').replace(/_/g, '/');
-    const padding = input.length % 4;
-    if (padding) {
-        input += '='.repeat(4 - padding);
-    }
-    return atob(input);
-};
+import { DecodedToken } from "./utils/interfaces";
+import { base64UrlDecode } from "./utils/base64";
 
 /**
  * Verifies the HMAC SHA-256 signature for the provided data using the given key.
@@ -38,7 +23,7 @@ const verifyHmacSha256Signature = async (key: string, data: string, expectedSign
  * @param secretKey The secret key used for HMAC SHA-256 signing.
  * @returns The decoded token as an object if valid, otherwise null.
  */
-const decodeToken = async (token: string, secretKey: string): Promise<DecodedToken | null> => {
+const decodeVerifyToken = async (token: string, secretKey: string): Promise<DecodedToken | null> => {
     const parts = token.split('.');
     if (parts.length !== 3) {
         return null;
@@ -61,4 +46,4 @@ const decodeToken = async (token: string, secretKey: string): Promise<DecodedTok
     };
 };
 
-export default decodeToken;
+export default decodeVerifyToken;

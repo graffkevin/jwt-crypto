@@ -1,12 +1,5 @@
-interface Payload {
-  [key: string]: string | number | Record<string, unknown> | Array<string>;
-}
-
-/**
- * Encodes the input string to Base64-URL format. This is a URL-safe encoding that does not require padding.
- * @param input
- */
-const base64UrlEncode = (input: string): string => btoa(input).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+import { base64UrlEncode } from "./utils/base64";
+import { Payload } from "./utils/interfaces";
 
 /**
  * Creates HMAC SHA-256 signature for the provided data using the given key.
