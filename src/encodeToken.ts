@@ -36,7 +36,6 @@ const encodeToken = async (payload: Payload, secretKey: string): Promise<string>
   const dataToSign = `${headerEncoded}.${payloadEncoded}`;
   const signature = await createHmacSha256Signature(secretKey, dataToSign);
 
-  // Concatenate the data to sign with the signature, separated by a period (.) to form the complete JWT token
   return `${dataToSign}.${signature}`;
 };
 
