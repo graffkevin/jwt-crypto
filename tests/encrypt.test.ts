@@ -1,15 +1,14 @@
-const encodeToken  = require('jwt-crypto');
+import { encodeToken } from 'src/main';
 
-describe('Encryption tests', () => {
+describe('encodeToken tests', () => {
     it('should encrypt a payload', async () => {
         const payload = { user: 'john.doe', role: 'admin' };
         const secretKey = 'your_secret_key';
 
         const encryptedToken = await encodeToken(payload, secretKey);
+        console.log("encryptedToken", encryptedToken);
 
         expect(encryptedToken).toBeDefined();
-        // Add more assertions as needed
     });
 
-    // Add more test cases for different scenarios
 });
