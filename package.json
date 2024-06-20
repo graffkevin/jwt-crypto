@@ -7,6 +7,16 @@
     "clean": "rm -rf dist",
     "build": "yarn clean && tsc && vite build"
   },
+  "keywords": [
+    "jwt",
+    "encode",
+    "decode",
+    "sign",
+    "token",
+    "verify",
+    "npm",
+    "javascript"
+  ],
   "type": "module",
   "types": "./dist/src/main.d.ts",
   "dependencies": {
