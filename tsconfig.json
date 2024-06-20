@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "baseUrl": ".",
+    "target": "ESNext",
     "module": "esnext",
     "moduleResolution": "Node",
     "outDir": "./dist",
@@ -17,5 +18,20 @@
       ]
     }
   },
-  "include": ["src/**/*"]
+  "lib": [
+    "DOM",
+    "DOM.Iterable",
+    "ESNext"
+  ],
+  "include": ["src/**/*"],
+  "exclude": [
+    ".github",
+    "dist",
+    "node_modules"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
