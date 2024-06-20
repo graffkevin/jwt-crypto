@@ -1,6 +1,6 @@
 {
   "name": "jwt-crypto",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "JWT Crypto",
   "main": "dist/src/main.js",
   "scripts": {
