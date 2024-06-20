@@ -1,6 +1,19 @@
 {
+  "name": "jwt-crypto",
+  "version": "1.0.0",
+  "description": "JWT Crypto",
+  "main": "dist/src/main.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "yarn clean && tsc && vite build"
+  },
+  "type": "module",
+  "types": "./dist/src/main.d.ts",
   "dependencies": {
     "@types/node": "^20.14.6",
     "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "vite": "^5.3.1"
   }
 }
