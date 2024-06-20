@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "module": "NodeNext",
-    "moduleResolution": "Bundler",
+    "module": "esnext",
+    "moduleResolution": "Node",
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
@@ -12,7 +12,9 @@
     "declaration": true,
     "sourceMap": true,
     "paths": {
-      "*": ["./node_modules/*"]
+      "@/*": [
+        "src/*"
+      ]
     }
   },
   "include": ["src/**/*"]
