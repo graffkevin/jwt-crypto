@@ -23,7 +23,7 @@
     "DOM.Iterable",
     "ESNext"
   ],
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tests/**/*"],
   "exclude": [
     ".github",
     "dist",
