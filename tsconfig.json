@@ -18,12 +18,21 @@
       ]
     }
   },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
   "lib": [
     "DOM",
     "DOM.Iterable",
     "ESNext"
   ],
-  "include": ["src/**/*", "tests/**/*"],
+  "include": [
+    "src/**/*",
+    "tests/**/*",
+    "node_modules/@types/node/globals.d.ts",
+    "node_modules/@types/node/globals.d.ts"
+  ],
   "exclude": [
     ".github",
     "dist",

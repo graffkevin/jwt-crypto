@@ -1,5 +1,7 @@
 import { DecodedToken } from "@/utils/interfaces";
 import { base64UrlDecode } from "@/utils/base64";
+const { TextEncoder } = require('util');
+const crypto = require('crypto').webcrypto;
 
 /**
  * Verifies the HMAC SHA-256 signature for the provided data using the given key.
@@ -10,11 +12,12 @@ import { base64UrlDecode } from "@/utils/base64";
  */
 const verifyHmacSha256Signature = async (key: string, data: string, expectedSignature: string): Promise<boolean> => {
     const encoder = new TextEncoder();
-    const cryptoKey = await crypto.subtle.importKey("raw", encoder.encode(key), { hash: "SHA-256", name: "HMAC" }, false, ["verify"]);
-    const signature = Uint8Array.from(atob(expectedSignature), c => c.charCodeAt(0));
+    const cryptoKey = await crypto.subtle.importKey("raw", encoder.encode(key), { name: "HMAC", hash: "SHA-256" }, false, ["verify"]);
+    const signature = Uint8Array.from(Buffer.from(expectedSignature, 'base64url'));
 
-    return crypto.subtle.verify("HMAC", cryptoKey, encoder.encode(data), signature);
+    return crypto.subtle.verify("HMAC", cryptoKey, signature, encoder.encode(data));
 };
+
 
 /**
  * Decodes the provided JWT token using the specified secret key.
@@ -26,18 +29,16 @@ const verifyHmacSha256Signature = async (key: string, data: string, expectedSign
 const decodeVerifyToken = async (token: string, secretKey: string): Promise<DecodedToken | null> => {
     const parts = token.split('.');
     if (parts.length !== 3) {
-        return null;
+        throw new Error('Invalid token format');
     }
-
     const [headerEncoded, payloadEncoded, signature] = parts;
-
     const header = JSON.parse(base64UrlDecode(headerEncoded));
     const payload = JSON.parse(base64UrlDecode(payloadEncoded));
-    const dataToVerify = `${headerEncoded}.${payloadEncoded}`;
+    const dataToVerify = `${headerEncoded}.${payloadEncoded}`
     const verifiedSignIn = await verifyHmacSha256Signature(secretKey, dataToVerify, signature);
 
     if (!verifiedSignIn) {
-        return null;
+        throw new Error('Invalid signature');
     }
 
     return {

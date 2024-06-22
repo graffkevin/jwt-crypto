@@ -1,6 +1,6 @@
 export interface DecodedToken {
-    header: object | undefined;
-    payload: object | undefined;
+    header: object;
+    payload: object;
 }
 
 export interface Payload {
