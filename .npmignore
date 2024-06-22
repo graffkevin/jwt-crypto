@@ -3,3 +3,5 @@ tests/
 tsconfig.json
 rollup.config.js
 .idea/
+jest.config.js
+test.config.ts
