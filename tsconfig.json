@@ -36,7 +36,8 @@
   "exclude": [
     ".github",
     "dist",
-    "node_modules"
+    "node_modules",
+    "tests/**/*.ts"
   ],
   "references": [
     {
