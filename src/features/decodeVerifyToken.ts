@@ -1,4 +1,4 @@
-import { DecodedToken } from "@/utils/interfaces";
+import { Payload } from "@/utils/interfaces";
 import { base64UrlDecode } from "@/utils/base64";
 const { TextEncoder } = require('util');
 const crypto = require('crypto').webcrypto;
@@ -26,13 +26,12 @@ const verifyHmacSha256Signature = async (key: string, data: string, expectedSign
  * @param secretKey The secret key used for HMAC SHA-256 signing.
  * @returns The decoded token as an object if valid, otherwise null.
  */
-const decodeVerifyToken = async (token: string, secretKey: string): Promise<DecodedToken | null> => {
+const decodeVerifyToken = async (token: string, secretKey: string): Promise<Payload> => {
     const parts = token.split('.');
     if (parts.length !== 3) {
         throw new Error('Invalid token format');
     }
     const [headerEncoded, payloadEncoded, signature] = parts;
-    const header = JSON.parse(base64UrlDecode(headerEncoded));
     const payload = JSON.parse(base64UrlDecode(payloadEncoded));
     const dataToVerify = `${headerEncoded}.${payloadEncoded}`
     const verifiedSignIn = await verifyHmacSha256Signature(secretKey, dataToVerify, signature);
@@ -41,10 +40,7 @@ const decodeVerifyToken = async (token: string, secretKey: string): Promise<Deco
         throw new Error('Invalid signature');
     }
 
-    return {
-        header,
-        payload
-    };
+    return payload;
 };
 
 export default decodeVerifyToken;

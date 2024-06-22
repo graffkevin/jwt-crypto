@@ -1,8 +1,17 @@
-export interface DecodedToken {
-    header: object;
-    payload: object;
-}
-
 export interface Payload {
-    [key: string]: string | number | Record<string, unknown> | Array<string>;
+    [key: string]:
+        | string
+        | number
+        | boolean
+        | symbol
+        | bigint
+        | null
+        | undefined
+        | Function
+        | Date
+        | RegExp
+        | Error
+        | Record<string, unknown>
+        | Array<string>
+        | unknown;
 }

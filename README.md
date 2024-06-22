@@ -40,6 +40,7 @@ const PAYLOAD = {
 const superSecretKey = "super-secret";
 const token = await encodeToken(PAYLOAD, superSecretKey);
 
+console.log("token:", token);
 // token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.3Jv5"
 ```
 
@@ -49,11 +50,9 @@ const token = await encodeToken(PAYLOAD, superSecretKey);
 import { decrypt } from "jwt-crypto";
 
 const basicEncodedJwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiam9obi5kb2UiLCJyb2xlIjoiYWRtaW4ifQ.8KlhxV_jhfRw7oWoXky6a57CXrlTCSEu9JP2_E6Lj6I';
-const decodedToken = decodeNoVerifyToken(basicEncodedJwt);
-if (!decodedToken) {
-    return;
-}
-const { header, payload } = decodedToken;
+const payload = decodeNoVerifyToken(basicEncodedJwt);
+
+console.log("payload:", payload);
 // payload: { user: 'john.doe', role: 'admin' }
 ```
 
@@ -64,11 +63,10 @@ import { decrypt } from "jwt-crypto";
 
 const basicEncodedJwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiam9obi5kb2UiLCJyb2xlIjoiYWRtaW4ifQ.8KlhxV_jhfRw7oWoXky6a57CXrlTCSEu9JP2_E6Lj6I';
 const secretKey = 'your_secret_key';
-const decodedToken = await decodeVerifyToken(basicEncodedJwt, secretKey);
-if (!decodedToken) {
-    return Error("decodedToken is undefined");
-}
-const { header, payload } = decodedToken;
+const payload = await decodeVerifyToken(basicEncodedJwt, secretKey);
+
+console.log("payload:", payload);
+// payload: { user: 'john.doe', role: 'admin' }
 ```
 
 ### License

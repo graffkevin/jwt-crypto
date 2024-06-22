@@ -1,4 +1,4 @@
-import { DecodedToken } from "@/utils/interfaces";
+import { Payload } from "@/utils/interfaces";
 import { base64UrlDecode } from "@/utils/base64";
 
 
@@ -8,23 +8,14 @@ import { base64UrlDecode } from "@/utils/base64";
  * @param token The JWT token string to decode.
  * @returns The decoded token as an object if valid, otherwise null.
  */
-const decodeNoVerifyToken = ( token?: string ): DecodedToken | null => {
-    if (!token) {
-       return null;
-    }
+const decodeNoVerifyToken = ( token: string ): Payload => {
     const parts = token.split('.');
-    const [headerEncoded, payloadEncoded] = parts;
-    const header = JSON.parse(base64UrlDecode(headerEncoded));
-    const payload = JSON.parse(base64UrlDecode(payloadEncoded));
-
     if (parts.length !== 3) {
-        return null;
+        throw new Error('Invalid token format');
     }
+    const [payloadEncoded] = parts;
 
-    return {
-        header,
-        payload
-    };
+    return JSON.parse(base64UrlDecode(payloadEncoded));
 };
 
 export default decodeNoVerifyToken;
