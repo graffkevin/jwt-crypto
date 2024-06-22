@@ -29,7 +29,7 @@ Usage
 
 ### Encrypt with private key (async)
 ```typescript
-import { encrypt } from "jwt-crypto";
+import { encodeToken } from "jwt-crypto";
 
 const PAYLOAD = {
   sub: "1234567890",
@@ -47,10 +47,10 @@ console.log("token:", token);
 ### Decrypt a JWT without verification (sync)
 
 ```typescript
-import { decrypt } from "jwt-crypto";
+import { decodeToken } from "jwt-crypto";
 
 const basicEncodedJwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiam9obi5kb2UiLCJyb2xlIjoiYWRtaW4ifQ.8KlhxV_jhfRw7oWoXky6a57CXrlTCSEu9JP2_E6Lj6I';
-const payload = decodeNoVerifyToken(basicEncodedJwt);
+const payload = decodeToken(basicEncodedJwt);
 
 console.log("payload:", payload);
 // payload: { user: 'john.doe', role: 'admin' }
@@ -59,11 +59,11 @@ console.log("payload:", payload);
 ### Decrypt a JWT with verification (async)
 
 ```typescript
-import { decrypt } from "jwt-crypto";
+import { validateAndDecodeToken } from "jwt-crypto";
 
 const basicEncodedJwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiam9obi5kb2UiLCJyb2xlIjoiYWRtaW4ifQ.8KlhxV_jhfRw7oWoXky6a57CXrlTCSEu9JP2_E6Lj6I';
 const secretKey = 'your_secret_key';
-const payload = await decodeVerifyToken(basicEncodedJwt, secretKey);
+const payload = await validateAndDecodeToken(basicEncodedJwt, secretKey);
 
 console.log("payload:", payload);
 // payload: { user: 'john.doe', role: 'admin' }
