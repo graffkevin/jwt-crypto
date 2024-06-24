@@ -13,9 +13,8 @@ const decodeNoVerifyToken = ( token: string ): Payload | undefined => {
     if (parts.length !== 3) {
         return;
     }
-    const [payloadEncoded] = parts;
 
-    return JSON.parse(base64UrlDecode(payloadEncoded));
+    return JSON.parse(base64UrlDecode(parts[1]));
 };
 
 export default decodeNoVerifyToken;

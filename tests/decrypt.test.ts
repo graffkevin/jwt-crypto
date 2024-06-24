@@ -8,6 +8,14 @@ describe('decodeNoVerifyToken tests', () => {
 
         expect(payload).toBeDefined()
     });
+
+    it('should throw an error for invalid token format', () => {
+        const invalidToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMyIsImVudGl0eV9pZCI6MTEyOTcsInNjb3BlIjpbIm5ld19vcmRlciIsIm9yZGVycyIsIm92ZXJ2aWV3IiwiZWRpdF9kZWxpdmVyeV9hbmRfcmV0dXJuIiwiZWRpdF9kYXRlcyIsImFkZF9hbmRfZWRpdF9ldmVudCIsInNlYXJjaCIsImRhc2hib2FyZCIsImJpbGxpbmciLCJwYXJ0bmVycyIsInJlZmVyZW5jZXMiLCJhbmFseXRpYyIsInNldHRpbmdzIiwiZmlsZXMiLCJjYW5jZWxfc291cmNpbmciLCJlZGl0X2VxdWlwbWVudCIsImVkaXRfYWRkaXRpb25hbF9pbmZvcm1hdGlvbiIsImVkaXRfb3JkZXJfc3VtbWFyeSIsImRlbGV0ZV91c2VyIiwibm90ZXMiLCJzZWFyY2hfc3VwcGxpZXIiLCJvZmZlcl9yZWNlaXZlZCJdLCJleHAiOjE3MTkzNTI5OTJ9.hktdCGaWfuo0vh-LwzQyEIYLHuJcX1X78ozaSWOnpwU";
+        const payload = decodeToken(String(invalidToken));
+        console.log("payload", payload);
+
+        expect(payload).toBeUndefined();
+    });
 });
 
 describe('decodeVerifyToken tests', () => {
