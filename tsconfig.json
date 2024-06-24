@@ -12,11 +12,6 @@
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "sourceMap": true,
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    }
   },
   "ts-node": {
     "esm": true,

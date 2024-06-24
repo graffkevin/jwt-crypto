@@ -1,5 +1,5 @@
-import { base64UrlEncode } from "@/utils/base64";
-import { Payload } from "@/utils/interfaces";
+import { base64UrlEncode } from "../utils/base64";
+import { Payload } from "../utils/interfaces";
 
 /**
  * Creates HMAC SHA-256 signature for the provided data using the given key.
