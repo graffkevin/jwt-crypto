@@ -10,9 +10,6 @@ import { base64UrlDecode } from "@/utils/base64";
  */
 const decodeNoVerifyToken = ( token: string ): Payload => {
     const parts = token.split('.');
-    if (parts.length !== 3) {
-        throw new Error('Invalid token format');
-    }
     const [payloadEncoded] = parts;
 
     return JSON.parse(base64UrlDecode(payloadEncoded));

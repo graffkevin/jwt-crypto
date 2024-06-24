@@ -28,9 +28,6 @@ const verifyHmacSha256Signature = async (key: string, data: string, expectedSign
  */
 const decodeVerifyToken = async (token: string, secretKey: string): Promise<Payload> => {
     const parts = token.split('.');
-    if (parts.length !== 3) {
-        throw new Error('Invalid token format');
-    }
     const [headerEncoded, payloadEncoded, signature] = parts;
     const payload = JSON.parse(base64UrlDecode(payloadEncoded));
     const dataToVerify = `${headerEncoded}.${payloadEncoded}`

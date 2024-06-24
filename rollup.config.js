@@ -4,7 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 
 export default [
     {
-        input: 'src/main.ts', // Chemin vers votre point d'entrée TypeScript
+        input: 'src/main.ts',
         output: [
             {
                 file: 'dist/bundle.cjs.js',
