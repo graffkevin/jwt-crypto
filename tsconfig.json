@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "target": "ESNext",
     "module": "esnext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "outDir": "./dist",
     "rootDir": "src",
     "strict": true,
