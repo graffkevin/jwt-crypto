@@ -26,9 +26,12 @@ const verifyHmacSha256Signature = async (key: string, data: string, expectedSign
  * @param secretKey The secret key used for HMAC SHA-256 signing.
  * @returns The decoded token as an object if valid, otherwise null.
  */
-const decodeVerifyToken = async (token: string, secretKey: string): Promise<Payload> => {
+const decodeVerifyToken = async (token: string, secretKey: string): Promise<Payload | undefined> => {
     const parts = token.split('.');
     const [headerEncoded, payloadEncoded, signature] = parts;
+    if (parts.length !== 3) {
+        return;
+    }
     const payload = JSON.parse(base64UrlDecode(payloadEncoded));
     const dataToVerify = `${headerEncoded}.${payloadEncoded}`
     const verifiedSignIn = await verifyHmacSha256Signature(secretKey, dataToVerify, signature);
