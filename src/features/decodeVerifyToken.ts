@@ -1,6 +1,7 @@
 import { Payload } from "../utils/interfaces";
 import { base64UrlDecode } from "../utils/base64";
 
+
 /**
  * Verifies the HMAC SHA-256 signature for the provided data using the given key.
  * @param key The secret key used for HMAC signing.
