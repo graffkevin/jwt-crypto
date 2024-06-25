@@ -1,6 +1,6 @@
 {
   "name": "jwt-crypto",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "JWT Crypto",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",

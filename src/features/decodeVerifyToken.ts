@@ -1,7 +1,5 @@
 import { Payload } from "../utils/interfaces";
 import { base64UrlDecode } from "../utils/base64";
-const { TextEncoder } = require('util');
-const crypto = require('crypto').webcrypto;
 
 /**
  * Verifies the HMAC SHA-256 signature for the provided data using the given key.
