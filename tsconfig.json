@@ -2,37 +2,35 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "ESNext",
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "outDir": "./dist",
-    "rootDir": "src",
-    "strict": true,
-    "esModuleInterop": true,
+    "useDefineForClassFields": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "allowJs": false,
     "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "declaration": true,
-    "sourceMap": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "noUnusedParameters": true,
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+    }
   },
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
-  },
-  "lib": [
-    "DOM",
-    "DOM.Iterable",
-    "ESNext"
-  ],
   "include": [
-    "src/**/*",
-    "tests/**/*",
-    "node_modules/@types/node/globals.d.ts",
-    "node_modules/@types/node/globals.d.ts"
-  ],
-  "exclude": [
-    ".github",
-    "dist",
-    "node_modules",
-    "tests/**/*.ts"
+    "src",
+    "tests"
   ],
   "references": [
     {

@@ -1,5 +1,5 @@
-import { Payload } from "../utils/interfaces";
-import { base64UrlDecode } from "../utils/base64";
+import { Payload } from "@/utils/interfaces";
+import { base64UrlDecode } from "@/utils/base64";
 
 
 /**

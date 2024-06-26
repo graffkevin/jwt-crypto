@@ -1,35 +1,49 @@
-// vite.config.ts
-import { defineConfig, UserConfig as UserConfigVite  } from 'vite';
-import { peerDependencies } from "./package.json";
-import path from 'path';
-import { UserConfig as InlineConfigVitest } from "vitest/config";
+import { resolve } from "path";
+import dts from "vite-plugin-dts";
+import { defineConfig } from "vitest/config";
+import { dependencies, name, peerDependencies } from "./package.json";
 
-const allDependencies = [...Object.keys(peerDependencies), ...Object.keys(peerDependencies)];
-const external = Array.from(new Set(allDependencies));
-
-type UserConfig = UserConfigVite & {
-    test: InlineConfigVitest["test"];
-};
-
-const config: UserConfig = {
-    resolve: {
-        alias: {
-            '@': path.resolve(__dirname, 'src'),
+// https://vitejs.dev/config/
+export default defineConfig({
+    build: {
+        lib: {
+            entry: resolve(__dirname, "src/main.ts"),
+            fileName: "[name]",
+            name,
+        },
+        rollupOptions: {
+            external: [...Object.keys(dependencies), ...Object.keys(peerDependencies)],
+            output: {
+                globals: {
+                    "@mui/x-date-pickers-pro": "xDatePickersPro",
+                    "@mui/x-license": "muiXLicense",
+                    "@tanstack/react-query": "reactQuery",
+                    "@tracktor/design-system": "ReactDOM",
+                    "@tracktor/react-utils": "reactUtils",
+                    dayjs: "dayjs",
+                    "lodash-es": "lodashEs",
+                    react: "React",
+                    "react-dom": "designSystem",
+                },
+            },
         },
     },
-    build: {
-        rollupOptions: {
-            input: {
-                main: 'src/main.ts',
+    plugins: [
+        dts({
+            exclude: ["**/*.test.ts", "**/*.test.tsx", "vite.config.ts", "**/test/**/*"],
+        }),
+    ],
+    resolve: {
+        alias: [
+            {
+                find: "@",
+                replacement: resolve(__dirname, "src"),
             },
-            external,
-        },
+        ],
     },
     test: {
         environment: "jsdom",
         globals: true,
         setupFiles: "test.config.ts",
     },
-};
-
-export default defineConfig(config);
+});

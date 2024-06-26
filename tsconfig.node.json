@@ -2,17 +2,15 @@
   "compilerOptions": {
     "composite": true,
     "module": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
   "include": [
-    "vite.config.ts"
+    "vite.config.ts",
   ],
-  "files": [
-    "package.json"
-  ],
+  "files": ["package.json"],
   "exclude": [
     "node_modules",
     "dist"
