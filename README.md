@@ -6,7 +6,7 @@ Encrypt and decrypt JSON Web Tokens (JWTs) securely using strong encryption algo
 
 You can install `jwt-crypto` using npm or yarn.
 
-## Github Repository
+## GitHub Repository
 https://github.com/graffkevin/jwt-crypto
 
 ### npm

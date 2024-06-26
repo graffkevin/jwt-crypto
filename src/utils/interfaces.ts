@@ -1,5 +1,6 @@
 export interface Payload {
     [key: string]:
+        | any
         | string
         | number
         | boolean

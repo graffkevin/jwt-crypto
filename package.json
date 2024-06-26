@@ -1,6 +1,6 @@
 {
   "name": "jwt-crypto",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "JWT Crypto",
   "type": "module",
   "types": "dist/main.d.ts",
