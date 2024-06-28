@@ -1,7 +1,7 @@
 import { resolve } from "path";
 import dts from "vite-plugin-dts";
 import { defineConfig } from "vitest/config";
-import { dependencies, name, peerDependencies } from "./package.json";
+import { name } from "./package.json";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,7 +12,6 @@ export default defineConfig({
             name,
         },
         rollupOptions: {
-            external: [...Object.keys(dependencies), ...Object.keys(peerDependencies)],
             output: {
                 globals: {
                     "@mui/x-date-pickers-pro": "xDatePickersPro",
