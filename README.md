@@ -26,31 +26,31 @@ Here is an example of how to use jwt-crypto:
 import { encode, decode, sign, verify } from 'jwt-crypto';
 
 // Example usage
-const token = sign({ foo: 'bar' }, 'your-256-bit-secret');
+const token = await encodeToken({ foo: 'bar' }, 'your-256-bit-secret');
 console.log(token);
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiam9obi5kb2UiLCJyb2xlIjoiYWRtaW4ifQ.8KlhxV_jhfRw7oWoXky6a57CXrlTCSEu9JP2_E6Lj6I'
 
-const decoded = verify(token, 'your-256-bit-secret');
+const decodedSignToken = await signToken(token, 'your-256-bit-secret');
 console.log(decoded);
+// { foo: 'bar' }
+
+const decodedToken = decodeToken(token);
+console.log(decodedToken);
+// { foo: 'bar' }
 ```
 
 ## API
 
 ### encodeToken(payload, secret)
-```TypeScript
-encodeToken(payload: object, secret: string): Promise<string>
-```
+encodeToken(payload, secret) - Promise<string>
 Encodes a payload into a JWT token (async).
 
 ### decode(token)
-```TypeScript
-decode(token: string): object
-```
+decode(token) - object
 Decodes a JWT token (sync).
 
 ### signToken(payload, secret)
-```TypeScript
-signToken(payload: object, secret: string): Promise<object>
-```
+signToken(payload, secret) - Promise<object>
 Signs a payload and returns a signed JWT token (async).
 
 ## Scripts
