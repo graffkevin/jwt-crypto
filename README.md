@@ -1,6 +1,6 @@
 # jwt-crypto
 
-**Version:** 1.1.3
+**Version:** 1.1.4
 
 ## Description
 
@@ -26,7 +26,7 @@ yarn add jwt-crypto
 Here is an example of how to use jwt-crypto:
 
 ```TypeScript
-import { encode, decode, sign, verify } from 'jwt-crypto';
+import { encodeToken, decodeToken, signToken } from 'jwt-crypto';
 
 // Example usage
 const token = await encodeToken({ foo: 'bar' }, 'your-256-bit-secret');
