@@ -1,73 +1,69 @@
 # jwt-crypto
 
-Encrypt and decrypt JSON Web Tokens (JWTs) securely using strong encryption algorithms such as AES, RSA, and HMAC. This library enhances JWT security in authentication systems by ensuring data confidentiality.
+**Version:** 1.1.1
+
+## Description
+
+jwt-crypto is a JavaScript library for encoding, decoding, signing, and verifying JWT tokens. It is designed for use in Node.js projects and front-end applications.
 
 ## Installation
 
-You can install `jwt-crypto` using npm or yarn.
-
-## GitHub Repository
-https://github.com/graffkevin/jwt-crypto
-
-### npm
-
+Use npm to install the package:
 ```bash
 npm install jwt-crypto
 ```
 
-### yarn
-
+use yarn to install the package:
 ```bash
 yarn add jwt-crypto
 ```
 
 ## Usage
-Usage
 
-### Encrypt a JWT
+Here is an example of how to use jwt-crypto:
 
+```TypeScript
+import { encode, decode, sign, verify } from 'jwt-crypto';
 
-### Encrypt with private key (async)
-```typescript
-import { encodeToken } from "jwt-crypto";
+// Example usage
+const token = sign({ foo: 'bar' }, 'your-256-bit-secret');
+console.log(token);
 
-const PAYLOAD = {
-  sub: "1234567890",
-  name: "John Doe",
-  iat: 1516239022,
-};
-
-const superSecretKey = "super-secret";
-const token = await encodeToken(PAYLOAD, superSecretKey);
-
-console.log("token:", token);
-// token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.3Jv5"
+const decoded = verify(token, 'your-256-bit-secret');
+console.log(decoded);
 ```
 
-### Decrypt a JWT without verification (sync)
+## API
 
-```typescript
-import { decodeToken } from "jwt-crypto";
+### encodeToken(payload, secret) // async
+Encodes a payload into a JWT token.
 
-const basicEncodedJwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiam9obi5kb2UiLCJyb2xlIjoiYWRtaW4ifQ.8KlhxV_jhfRw7oWoXky6a57CXrlTCSEu9JP2_E6Lj6I';
-const payload = decodeToken(basicEncodedJwt);
+### decode(token) // sync
+Decodes a JWT token.
 
-console.log("payload:", payload);
-// payload: { user: 'john.doe', role: 'admin' }
-```
+### signToken(payload, secret)
+Signs a payload and returns a signed JWT token.
 
-### Decrypt a JWT with verification (async)
+### verify(token, secret)
+Verifies a JWT token and returns the decoded payload.
 
-```typescript
-import { validateAndDecodeToken } from "jwt-crypto";
+## Scripts
 
-const basicEncodedJwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiam9obi5kb2UiLCJyb2xlIjoiYWRtaW4ifQ.8KlhxV_jhfRw7oWoXky6a57CXrlTCSEu9JP2_E6Lj6I';
-const secretKey = 'your_secret_key';
-const payload = await validateAndDecodeToken(basicEncodedJwt, secretKey);
+- `clean`: rm -rf dist
+- `build`: tsc && vite build
+- `test`: vitest
 
-console.log("payload:", payload);
-// payload: { user: 'john.doe', role: 'admin' }
-```
+## Keywords
 
-### License
-This project is licensed under the MIT License - see the LICENSE file for details.
+jwt, encode, decode, sign, token, verify, npm, javascript
+
+## Contributions
+
+Contributions are welcome. Please submit a PR or open an issue on GitHub.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Author
+Kevin Graff
