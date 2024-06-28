@@ -1,10 +1,13 @@
 # jwt-crypto
 
-**Version:** 1.1.2
+**Version:** 1.1.3
 
 ## Description
 
 jwt-crypto is a JavaScript library for encoding, decoding, signing, and verifying JWT tokens. It is designed for use in Node.js projects and front-end applications.
+
+## GitHub
+https://github.com/graffkevin/jwt-crypto
 
 ## Installation
 
