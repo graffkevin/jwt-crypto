@@ -1,6 +1,6 @@
 # jwt-crypto
 
-**Version:** 1.1.4
+**Version:** 1.1.5
 
 ## Description
 
@@ -64,7 +64,7 @@ Signs a payload and returns a signed JWT token (async).
 
 ## Keywords
 
-jwt, encode, decode, sign, token, verify, npm, javascript
+jwt-crypto, jwt, encode, decode, sign, token, verify, npm, javascript, typescript
 
 ## Contributions
 
