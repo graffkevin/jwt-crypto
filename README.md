@@ -1,6 +1,6 @@
 # jwt-crypto
 
-**Version:** 1.1.1
+**Version:** 1.1.2
 
 ## Description
 
@@ -35,17 +35,23 @@ console.log(decoded);
 
 ## API
 
-### encodeToken(payload, secret) // async
-Encodes a payload into a JWT token.
+### encodeToken(payload, secret)
+```TypeScript
+encodeToken(payload: object, secret: string): Promise<string>
+```
+Encodes a payload into a JWT token (async).
 
-### decode(token) // sync
-Decodes a JWT token.
+### decode(token)
+```TypeScript
+decode(token: string): object
+```
+Decodes a JWT token (sync).
 
 ### signToken(payload, secret)
-Signs a payload and returns a signed JWT token.
-
-### verify(token, secret)
-Verifies a JWT token and returns the decoded payload.
+```TypeScript
+signToken(payload: object, secret: string): Promise<object>
+```
+Signs a payload and returns a signed JWT token (async).
 
 ## Scripts
 
